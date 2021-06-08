@@ -24,11 +24,15 @@ LINE bot user webhook url as a link to server.
 
 https://ngrok.com/download
 
-
 ## Run server
-```
+``` shell
 python3 manage.py runserver 
 ./ngrok http 8000
+```
+
+## Allow hosts
+``` python
+ALLOWED_HOSTS = ['127.0.0.1', '20af8c34126e.ngrok.io']
 ```
 
 ## Add Webhook URL

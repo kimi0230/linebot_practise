@@ -24,6 +24,7 @@ def callback(request):
 
         for event in events:
             if isinstance(event, MessageEvent):
+                # 收到文字後, 處理程序
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=event.message.text))
 
