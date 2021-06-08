@@ -1,0 +1,4 @@
+.env
+linebot_practise/__pycache__/*
+mockapi/__pycache__/*
+mockapi/migrations/__pycache__/*
