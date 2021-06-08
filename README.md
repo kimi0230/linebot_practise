@@ -31,6 +31,8 @@ python3 manage.py runserver
 ```
 
 ## Allow hosts
+`linebot_practise/settings.py`
+
 ``` python
 ALLOWED_HOSTS = ['127.0.0.1', '20af8c34126e.ngrok.io']
 ```
