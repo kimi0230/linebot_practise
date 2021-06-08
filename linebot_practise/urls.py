@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from mockapi import views
+# from mockapi import views
+from msgresponseapi import views as msgresponseapi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('^callback', views.callback),
+    # url('^callback', views.callback),
+    url('^callback', msgresponseapi.callback),
 ]

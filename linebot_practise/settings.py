@@ -33,7 +33,7 @@ LINE_CHANNEL_SECRET = config(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '20af8c34126e.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', config('HOST')]
 
 
 # Application definition
