@@ -29,23 +29,21 @@ def callback(request):
                     mtext = event.message.text
                     if mtext == '@傳送文字':
                         msgresponse.sendText(event)
-
                     elif mtext == '@傳送圖片':
                         msgresponse.sendImage(event)
-
                     elif mtext == '@傳送貼圖':
                         msgresponse.sendStick(event)
-
                     elif mtext == '@多項傳送':
                         msgresponse.sendMulti(event)
-
                     elif mtext == '@傳送位置':
                         msgresponse.sendPosition(event)
-
                     elif mtext == '@吱吱':
                         msgresponse.sendImage(event)
-
-                    if mtext == '@快速選單':
+                    elif mtext == '@傳送聲音':
+                        msgresponse.sendVoice(event)
+                    elif mtext == '@傳送影片':
+                        msgresponse.sendVedio(event)
+                    elif mtext == '@快速選單':
                         msgresponse.sendQuickreply(event)
 
         return HttpResponse()

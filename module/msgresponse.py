@@ -1,9 +1,10 @@
 from django.conf import settings
 
 from linebot import LineBotApi
-from linebot.models import TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, QuickReply, QuickReplyButton, MessageAction
+from linebot.models import TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, QuickReply, QuickReplyButton, MessageAction, AudioSendMessage, VideoSendMessage
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
+baseurl = settings.BASE_URL
 
 
 def sendText(event):  # 傳送文字
@@ -96,6 +97,31 @@ def sendQuickreply(event):  # 快速選單
                     ),
                 ]
             )
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+    except:
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text='發生錯誤！'))
+
+
+def sendVoice(event):  # 傳送聲音
+    print(baseurl)
+    try:
+        message = AudioSendMessage(
+            original_content_url=baseurl + 'video/mario.m4a',  # 聲音檔置於static資料夾
+            duration=20000  # 聲音長度20秒
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+    except:
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text='發生錯誤！'))
+
+
+def sendVedio(event):  # 傳送影像
+    try:
+        message = VideoSendMessage(
+            original_content_url=baseurl + 'video/robot.mp4',  # 影片檔置於static資料夾
+            preview_image_url=baseurl + 'img/robot.jpg'
         )
         line_bot_api.reply_message(event.reply_token, message)
     except:
