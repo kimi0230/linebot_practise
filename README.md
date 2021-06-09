@@ -62,5 +62,29 @@ ALLOWED_HOSTS = ['127.0.0.1', '20af8c34126e.ngrok.io']
 @圖片地圖
 @日期時間
 ```
+
+## Heroku
+```shell
+## install
+pip3 install virtualenv
+
+## create env
+virtualenv herokuenv
+
+cd herokuenv
+## start env
+source bin/activate
+## stop env
+deactivate
+
+pip3 install dj-database-url dj-static gunicorn psycopg2-binary
+
+pip freeze > requirements.txt
+
+heroku config:set DJANGO_SETTINGS_MODULE={project}.prod_settings
+heroku config:set DISABLE_COLLECTSTATIC=1
+
+heroku git:remote -a {project} 
+```
 ## Reference
 * https://github.com/henriquebastos/python-decouple
