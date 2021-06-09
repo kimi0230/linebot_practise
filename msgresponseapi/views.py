@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage, PostbackEvent
-from module import msgresponse, templateresponse, postbackresponse
+from module import msgresponse, templateresponse, postbackresponse, flexibleresponse
 from urllib.parse import parse_qsl
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
@@ -62,6 +62,8 @@ def callback(request):
                         templateresponse.sendImgmap(event)
                     elif mtext == '@日期時間':
                         templateresponse.sendDatetime(event)
+                    elif mtext == '@彈性配置':
+                        flexibleresponse.sendFlex(event)
 
             if isinstance(event, PostbackEvent):  # PostbackTemplateAction觸發此事件
                 # 取得Postback資料
